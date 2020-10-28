@@ -5,9 +5,9 @@
     'author': 'Softhealer Technologies',
     'website': "https://www.softhealer.com",
     "support": "support@softhealer.com",
-    'version': '14.0.1',
+    'version': '14.0.2',
     'category': 'Productivity',
-    "summary": """Product Multiple Barcode,Product Various Barcode Generator,Product Many Barcodes, Product Multi Barcode,Different Product Barcodes,Generate Various Product Barcodes, Search Product Multiple Barcode, Find Product Multiple Barcode Odoo""",
+    "summary": "Product Multiple Barcode,Product Various Barcode Generator,Product Many Barcodes, Product Multi Barcode,Different Product Barcodes,Generate Various Product Barcodes, Search Product Multiple Barcode, Find Product Multiple Barcode Odoo",
     'description': """Mainly the use of this module, you can create a multiple barcode for each of product. Also you can search that product in product selection lines like in sale order, purchase order, invoices, bills, operation lines.
  Product Multiple Barcode Odoo, Product Various Barcode Generator Odoo
  
