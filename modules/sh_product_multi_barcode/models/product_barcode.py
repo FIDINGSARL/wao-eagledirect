@@ -21,12 +21,11 @@ class ShProduct(models.Model):
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
         res = super(ShProduct, self)._name_search(name=name, args=args,
                                                   operator=operator, limit=limit, name_get_uid=name_get_uid)
-        mutli_barcode_search = self._search(
-            [('barcode_line_ids', '=', name)] + args, limit=limit, access_rights_uid=name_get_uid)
-        multi_barcode_res = []
+        mutli_barcode_search = list(self._search(
+            [('barcode_line_ids', '=', name)] + args, limit=limit, access_rights_uid=name_get_uid))
         if mutli_barcode_search:
-            multi_barcode_res = self.browse(mutli_barcode_search).name_get()
-        return res + multi_barcode_res
+            return res + mutli_barcode_search
+        return res
 
 
 class ShProductBarcode(models.Model):
