@@ -107,7 +107,7 @@ class QuoteCalculator_SalesOrder(models.Model):
     margin = fields.Float(string = 'Margin')
 
     freight = fields.Float(string = 'Freight')
-    exchange_rate = fields.Float(string ='Exchange Rate')
+    exchange_rate = fields.Float(string ='Exchange Rate',digits=(12, 4))
     cost_aud_per_unit = fields.Float(string = 'Cost AUD per Unit', compute ='_calCost', store =True)
     line_items = fields.One2many('sale.order.line', 'order_id', string='Order Lines Items')
 
