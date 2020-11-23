@@ -37,5 +37,5 @@
         <field name="view_id" ref="sh_import_user_wizard" />
         <field name="target">new</field>
     </record>
-    <menuitem id="sh_import_user_wizard_menu" name="Import Users" action="sh_import_user_action" parent="base.menu_users" groups="sh_all_in_one_import.sh_import_user_group" />
+    <menuitem id="sh_import_user_wizard_menu" name="Import Users" action="sh_import_user_action" parent="base.menu_users" groups="sh_import_users.sh_import_user_group" />
 </odoo>
