@@ -254,7 +254,7 @@ class QuoteCalculator_SalesOrderLine(models.Model):
             if self.env.context.get('import_file', False) and not self.env.user.user_has_groups('account.group_account_manager'):
                 line.tax_id.invalidate_cache(['invoice_repartition_line_ids'], [line.tax_id.id])
 			
-def QuoteCalculator_Account_Move(models.Model):
+class QuoteCalculator_Account_Move(models.Model):
     _inherit = "account.move"
     
     purchase_order_id = fields.Many2one('purchase.order', string='Purchase Order Id')
@@ -262,7 +262,7 @@ def QuoteCalculator_Account_Move(models.Model):
     @api.depends('purchase_order_id')
     def _cal_fixed_currency_rate(self):
         for record in self:
-            fixed_currency_rate_bill = purchase_order_id.fixed_currency_rate
+            record.fixed_currency_rate_bill = record.purchase_order_id.fixed_currency_rate
 
     fixed_currency_rate_bill = fields.Float(string = 'Fixed Currency Rate', digits = (12, 4), compute = "_cal_fixed_currency_rate", store = True)
     
