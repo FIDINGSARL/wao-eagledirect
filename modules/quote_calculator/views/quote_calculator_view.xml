@@ -11,6 +11,7 @@
                 <field name="design_engineering">Design Engineering</field>
                 <field name="handlings">Handlings</field>
                 <field name="custom_value">Custom</field>
+                <field name="fixed_currency_rate">Fixed Currency Rate</field>
             </field>
             <field name="amount_tax" position="after">
                <field name="freight_supplier_currency" widget="monetary" options="{'currency_field': 'currency_id'}">Freight Supplier Currency</field>
@@ -45,7 +46,6 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="model">sale.order</field >
         <field name="arch" type= "xml">
-
                 <field name="sale_order_template_id" position = "after" >
                     <field name="margin"/>
                     <field name="freight"/>
@@ -99,4 +99,18 @@
                </xpath>
         </field>
     </record>
+
+    <record id= "quotecalculator_view_in_invoice_tree" model= "ir.ui.view">
+        <field name="inherit_id" ref="account.view_in_invoice_tree" />
+        <field name="model">account.move</field>
+        <field name="arch" type= "xml">
+            <field name="amount_tax_signed" position = "after" >
+                    <field name="purchase_order_id"/>
+                    <field name="fixed_currency_rate_bill"/>
+                    <field name="fixed_rate"/>         
+                </field>            
+        </field>
+    </record>
+
+
 </odoo>

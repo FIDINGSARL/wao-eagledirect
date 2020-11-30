@@ -6,7 +6,8 @@
     'license': 'LGPL-3',
     'depends': [
         'sale_management',
-        'purchase'
+        'purchase',
+        'account_accountant'
     ],    
     'data': [
         'views/quote_calculator_view.xml'
