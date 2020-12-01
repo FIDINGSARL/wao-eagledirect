@@ -1,6 +1,6 @@
 {
     'name' : 'Quote Calculator',
-    'version': '1.1',
+    'version': '1.2',
     'Summary': 'Quote Calculations for custom Sales and Purchase Modules',
     'description': 'To add new fields in the existing modules',
     'license': 'LGPL-3',
