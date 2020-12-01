@@ -13,6 +13,7 @@ class QuoteCalculator_purchase(models.Model):
     custom_value = fields.Float(string = 'Custom')
     line_items = fields.One2many('purchase.order.line', 'order_id', string='Order Line Items')
     dealer_price = fields.Float(string='Purchase Price', compute = '_calPrice', store = True)
+    fixed_currency_rate = fields.Float(string = 'Fixed Currency Rate')
 
     @api.depends('line_items.price_total')
     def _amount_all(self):
@@ -253,7 +254,21 @@ class QuoteCalculator_SalesOrderLine(models.Model):
             if self.env.context.get('import_file', False) and not self.env.user.user_has_groups('account.group_account_manager'):
                 line.tax_id.invalidate_cache(['invoice_repartition_line_ids'], [line.tax_id.id])
 			
-			
+class QuoteCalculator_Account_Move(models.Model):
+    _inherit = "account.move"
+    
+    purchase_order_id = fields.Many2one('purchase.order', string='Purchase Order Id')
+
+    @api.depends('purchase_order_id')
+    def _cal_fixed_currency_rate(self):
+        for record in self:
+            record.fixed_currency_rate_bill = record.purchase_order_id.fixed_currency_rate
+
+    fixed_currency_rate_bill = fields.Float(string = 'Fixed Currency Rate', digits = (12, 4), compute = "_cal_fixed_currency_rate", store = True)
+    
+    fixed_rate = fields.Float(related = 'purchase_order_id.fixed_currency_rate', store = True)
+
+
 
 
     
