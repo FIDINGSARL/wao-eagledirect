@@ -259,6 +259,8 @@ class QuoteCalculator_Account_Move(models.Model):
     
     purchase_order_id = fields.Many2one('purchase.order', string='Purchase Order Id')
 
+    purchase_ref = fields.Float(related = 'purchase_order_id.name', string = 'Ref', store = True)
+
     @api.depends('purchase_order_id')
     def _cal_fixed_currency_rate(self):
         for record in self:

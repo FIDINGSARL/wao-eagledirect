@@ -107,7 +107,8 @@
             <field name="amount_tax_signed" position = "after" >
                     <field name="purchase_order_id"/>
                     <field name="fixed_currency_rate_bill"/>
-                    <field name="fixed_rate"/>         
+                    <field name="fixed_rate"/>  
+                    <field name="purchase_ref" />       
                 </field>            
         </field>
     </record>
